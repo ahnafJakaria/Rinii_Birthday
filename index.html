@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Rinii</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 10;
+            padding: 2rem;
+            max-width: 800px;
+            background-color: rgba(255, 255, 255, 0.25);
+            border-radius: 30px;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 8px 32px rgba(255, 105, 180, 0.4);
+            transition: all 0.5s ease;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .container:hover {
+            box-shadow: 0 8px 40px rgba(255, 105, 180, 0.6);
+            transform: scale(1.02);
+        }
+
+        h1 {
+            font-size: 4rem;
+            color: #FF1493;
+            text-shadow: 3px 3px 12px rgba(255, 255, 255, 0.9), 0 0 30px rgba(255, 20, 147, 0.3);
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: bounce-in 1.5s forwards 0.5s;
+            font-family: 'Comic Sans MS', cursive;
+        }
+
+        .subtitle {
+            font-size: 2rem;
+            color: #8A2BE2;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.7);
+            opacity: 0;
+            animation: fade-in 1.5s forwards 1.5s;
+        }
+
+        .next-button {
+            padding: 1.2rem 3.5rem;
+            font-size: 1.6rem;
+            background: linear-gradient(45deg, #FF1493, #8A2BE2);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(255, 20, 147, 0.5);
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fade-in 1s forwards 2.5s;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .next-button:hover {
+            transform: scale(1.08) translateY(-5px);
+            box-shadow: 0 8px 30px rgba(255, 20, 147, 0.7);
+            background: linear-gradient(45deg, #8A2BE2, #FF1493);
+        }
+
+        .audio-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 12px 18px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(5px);
+        }
+
+        .audio-controls button {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #FF1493;
+            margin-right: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .audio-controls button:hover {
+            transform: scale(1.2);
+            color: #8A2BE2;
+        }
+
+        .audio-controls input {
+            width: 100px;
+            accent-color: #FF1493;
+        }
+
+        .balloon, .heart, .star {
+            position: absolute;
+            z-index: 1;
+            opacity: 0.7;
+            pointer-events: none;
+            font-size: 2rem;
+            animation: floatUp 8s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0.7; }
+            100% { transform: translateY(-20vh) rotate(720deg); opacity: 0; }
+        }
+
+        @keyframes bounce-in {
+            0% { transform: scale(0); opacity: 0; }
+            60% { transform: scale(1.15); opacity: 1; }
+            80% { transform: scale(0.95); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes fade-in {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 2.2rem;
+            background-color: #8A2BE2;
+            animation: blink 0.8s infinite;
+            vertical-align: middle;
+            margin-left: 4px;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8rem; }
+            .subtitle { font-size: 1.5rem; }
+            .container { width: 92%; padding: 1.5rem; }
+            .next-button { padding: 0.9rem 2.2rem; font-size: 1.3rem; }
+            .audio-controls { bottom: 10px; right: 10px; padding: 8px 12px; }
+            .audio-controls button { font-size: 1.4rem; }
+            .audio-controls input { width: 70px; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2.2rem; }
+            .subtitle { font-size: 1.2rem; }
+            .next-button { padding: 0.7rem 1.8rem; font-size: 1.1rem; }
+            .balloon, .heart, .star { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 Happy Birthday,<br> Rinii 🎂</h1>
+        <div class="subtitle">
+            Hey Fishaaaaaa! Ready for your special surprise?
+            <span class="cursor"></span>
+        </div>
+        <button class="next-button" onclick="goToNextPage()">🎁 Your Surprise 🎁</button>
+    </div>
+
+    <div class="audio-controls">
+        <button id="play-pause">⏸️</button>
+        <input type="range" id="volume" min="0" max="1" step="0.1" value="0.5">
+    </div>
+
+    <!-- Happy Birthday Music - rini.mp3 -->
+    <audio id="birthday-song" loop>
+        <source src="rini.mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+        // Floating elements
+        const emojis = ['🎈', '🎈', '❤️', '💖', '✨', '🌟', '🌸', '🎉', '🎊'];
+        for (let i = 0; i < 25; i++) {
+            const el = document.createElement('div');
+            el.className = ['balloon', 'heart', 'star'][Math.floor(Math.random() * 3)];
+            el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            el.style.left = Math.random() * 100 + '%';
+            el.style.animationDuration = (6 + Math.random() * 8) + 's';
+            el.style.animationDelay = (Math.random() * 10) + 's';
+            el.style.fontSize = (1.5 + Math.random() * 2) + 'rem';
+            document.body.appendChild(el);
+        }
+
+        // Audio
+        const audio = document.getElementById('birthday-song');
+        const playPauseBtn = document.getElementById('play-pause');
+        const volumeControl = document.getElementById('volume');
+        let isPlaying = true;
+
+        audio.volume = volumeControl.value;
+
+        setTimeout(() => {
+            audio.play().catch(() => {});
+        }, 1000);
+
+        playPauseBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                audio.pause();
+                playPauseBtn.textContent = '▶️';
+            } else {
+                audio.play();
+                playPauseBtn.textContent = '⏸️';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        volumeControl.addEventListener('input', () => {
+            audio.volume = volumeControl.value;
+        });
+
+        function goToNextPage() {
+            window.location.href = "memory.html";
+        }
+    </script>
+</body>
+</html>
